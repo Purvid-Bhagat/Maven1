@@ -5,7 +5,15 @@ podTemplate(containers: [
  command: 'sleep',
  args: '30d'
  ),
- ]) {
+ ]) 
+volumes: [
+  persistentVolumeClaim(
+      mountPath: '/root/.m2/repository', 
+      claimName: 'jenkins-pv-claim', 
+      readOnly: false
+      )
+  ]) 
+{
  node(POD_LABEL) {
  stage('Get a Maven project') {
  git 'https://github.com/dlambrig/simple-java-mavenapp.git'
