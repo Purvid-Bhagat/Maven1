@@ -1,20 +1,11 @@
 podTemplate(containers: [
-  containerTemplate(
-      name: 'maven', 
-      image: 'maven:latest', 
-      command: 'sleep', 
-      args: '99d'
-      )
-  ], 
-  
-  volumes: [
-  persistentVolumeClaim(
-      mountPath: '/root/.m2/repository', 
-      claimName: 'jenkins-pv-claim', 
-      readOnly: false
-      )
-  ]) 
-{
+ containerTemplate(
+ name: 'maven',
+ image: 'maven:3.8.1-jdk-8',
+ command: 'sleep',
+ args: '30d'
+ ),
+ ]) {
  node(POD_LABEL) {
  stage('Get a Maven project') {
  git 'https://github.com/dlambrig/simple-java-mavenapp.git'
