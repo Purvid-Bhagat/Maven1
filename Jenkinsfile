@@ -1,15 +1,16 @@
 podTemplate(containers: [
- containerTemplate(
- name: 'maven',
- image: 'maven:3.8.1-jdk-8',
- command: 'sleep',
- args: '30d'
- ),
- ]) 
-volumes: [
+  containerTemplate(
+      name: 'maven', 
+      image: 'maven:latest', 
+      command: 'sleep', 
+      args: '99d'
+      )
+  ], 
+  
+  volumes: [
   persistentVolumeClaim(
       mountPath: '/root/.m2/repository', 
-      claimName: 'jenkins-pv-claim', 
+      claimName: 'maven-repo-storage', 
       readOnly: false
       )
   ]) 
