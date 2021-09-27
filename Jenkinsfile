@@ -23,7 +23,7 @@ podTemplate(containers: [
 echo "maven build"
 mvn -B -DskipTests clean package
  '''
-}
+
  }
  }
  }
